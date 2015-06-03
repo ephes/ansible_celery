@@ -1,0 +1,20 @@
+---
+- name: celery | install CeleryBeat upstart jobs
+  sudo: yes
+  template: >
+    src=upstart.celerybeat.conf.j2
+    dest=/etc/init/konektom-celerybeat.conf
+  notify:
+    - restart celery beat
+  tags:
+    - celery
+
+- name: celery | install Celery Worker upstart jobs
+  sudo: yes
+  template: >
+    src=upstart.celeryworker.conf.j2
+    dest=/etc/init/konektom-celeryworker.conf
+  notify:
+    - restart celery workers
+  tags:
+    - celery

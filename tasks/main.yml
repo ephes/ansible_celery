@@ -1,0 +1,4 @@
+---
+# tasks file for roles/celery
+
+- include: celery.yml tags=celery
