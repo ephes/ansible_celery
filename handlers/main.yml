@@ -2,14 +2,14 @@
 # handlers file for roles/celery
 
 - name: restart celery workers
-  service: name=konektom-celeryworker state={{ item }}
+  service: name=celeryworker state={{ item }}
   sudo: yes
   with_items:
     - stopped
     - started
 
 - name: restart celery beat
-  service: name=konektom-celerybeat state={{ item }}
+  service: name=celerybeat state={{ item }}
   sudo: yes
   with_items:
     - stopped

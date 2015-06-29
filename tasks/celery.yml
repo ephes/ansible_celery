@@ -3,7 +3,7 @@
   sudo: yes
   template: >
     src=upstart.celerybeat.conf.j2
-    dest=/etc/init/konektom-celerybeat.conf
+    dest=/etc/init/celerybeat.conf
   notify:
     - restart celery beat
   tags:
@@ -13,7 +13,7 @@
   sudo: yes
   template: >
     src=upstart.celeryworker.conf.j2
-    dest=/etc/init/konektom-celeryworker.conf
+    dest=/etc/init/celeryworker.conf
   notify:
     - restart celery workers
   tags:
