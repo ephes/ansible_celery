@@ -14,5 +14,6 @@ env DATABASE_URL=postgres://localhost/{{ database_name }}
 env SENDGRID_USERNAME={{ SENDGRID_USERNAME }}
 env SENDGRID_PASSWORD={{ SENDGRID_PASSWORD }}
 env CELERYBEAT_LOG_FILE={{ django_dir }}/celerybeat.log
+env DJANGO_LOGFILE_PATH={{ DJANGO_LOGFILE_PATH }}
 
 exec {{ virtualenv_dir }}/bin/python {{ django_dir }}/manage.py celery beat --loglevel=INFO --settings={{ django_settings }}
