@@ -13,5 +13,6 @@ env DJANGO_AWS_STORAGE_BUCKET_NAME={{ DJANGO_AWS_STORAGE_BUCKET_NAME }}
 env DATABASE_URL=postgres://localhost/{{ database_name }}
 env SENDGRID_USERNAME={{ SENDGRID_USERNAME }}
 env SENDGRID_PASSWORD={{ SENDGRID_PASSWORD }}
+env CELERYBEAT_LOG_FILE={{ django_dir }}/celerybeat.log
 
 exec {{ virtualenv_dir }}/bin/python {{ django_dir }}/manage.py celery beat --loglevel=INFO --settings={{ django_settings }}

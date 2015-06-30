@@ -6,7 +6,6 @@ start on runlevel [2345]
 stop on runlevel [06]
 
 setuid {{ user }}
-env SECRET_KEY={{ SECRET_KEY }}
 
 
-exec {{ virtualenv_dir }}/bin/python {{ django_dir }}/manage.py celery worker --loglevel=INFO --settings={{ django_settings }}
+exec {{ virtualenv_dir }}/bin/python {{ django_dir }}/manage.py celery worker --loglevel=INFO --settings={{ django_settings }} -f {{ django_dir }}/celeryworker.log
