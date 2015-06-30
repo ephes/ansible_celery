@@ -7,7 +7,15 @@ stop on runlevel [06]
 
 setuid {{ user }}
 
-env DJANGO_LOGFILE_PATH={{ DJANGO_LOGFILE_PATH }}
 env DJANGO_SECRET_KEY={{ SECRET_KEY }}
+env DJANGO_SETTINGS_MODULE={{ django_settings }}
+env DJANGO_AWS_ACCESS_KEY_ID={{ DJANGO_AWS_ACCESS_KEY_ID }}
+env DJANGO_AWS_SECRET_ACCESS_KEY={{ DJANGO_AWS_SECRET_ACCESS_KEY }}
+env DJANGO_AWS_STORAGE_BUCKET_NAME={{ DJANGO_AWS_STORAGE_BUCKET_NAME }}
+env DATABASE_URL=postgres://localhost/{{ database_name }}
+env SENDGRID_USERNAME={{ SENDGRID_USERNAME }}
+env SENDGRID_PASSWORD={{ SENDGRID_PASSWORD }}
+env CELERYBEAT_LOG_FILE={{ django_dir }}/celerybeat.log
+env DJANGO_LOGFILE_PATH={{ DJANGO_LOGFILE_PATH }}
 
 exec {{ virtualenv_dir }}/bin/python {{ django_dir }}/manage.py celery worker --loglevel=INFO --settings={{ django_settings }} -f {{ django_dir }}/celeryworker.log
