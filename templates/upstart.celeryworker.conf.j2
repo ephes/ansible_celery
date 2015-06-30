@@ -7,5 +7,7 @@ stop on runlevel [06]
 
 setuid {{ user }}
 
+env DJANGO_LOGFILE_PATH={{ DJANGO_LOGFILE_PATH }}
+
 
 exec {{ virtualenv_dir }}/bin/python {{ django_dir }}/manage.py celery worker --loglevel=INFO --settings={{ django_settings }} -f {{ django_dir }}/celeryworker.log
